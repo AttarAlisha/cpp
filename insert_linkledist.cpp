@@ -1,3 +1,84 @@
+#include <iostream>
+
+class Node {
+public:
+    int data;
+    Node* next;
+
+    Node(int value) : data(value), next(nullptr) {}
+};
+
+class LinkedList {
+private:
+    Node* head;
+
+public:
+    LinkedList() : head(nullptr) {}
+
+    // Attach at end
+    void attach(int value) {
+        Node* newNode = new Node(value);
+        if (head == nullptr) {
+            head = newNode;
+        } else {
+            Node* temp = head;
+            while (temp->next != nullptr) {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+    }
+
+    // Traverse
+    void traverse() {
+        Node* temp = head;
+        while (temp != nullptr) {
+            std::cout << temp->data << " ";
+            temp = temp->next;
+        }
+        std::cout << std::endl;
+    }
+
+    // Detach at end
+    void detach() {
+        if (head == nullptr) {
+            std::cout << "List is empty." << std::endl;
+            return;
+        }
+        if (head->next == nullptr) {
+            delete head;
+            head = nullptr;
+            return;
+        }
+        Node* prev = nullptr;
+        Node* curr = head;
+        while (curr->next != nullptr) {
+            prev = curr;
+            curr = curr->next;
+        }
+        prev->next = nullptr;
+        delete curr;
+    }
+};
+
+int main() {
+    LinkedList list;
+    list.attach(1);
+    list.attach(2);
+    list.attach(3);
+
+    std::cout << "Original List: ";
+    list.traverse();
+
+    list.detach();
+
+    std::cout << "List after detaching last element: ";
+    list.traverse();
+
+    return 0;
+}
+
+/*
 #include<iostream>
 using namespace std;
 
@@ -36,4 +117,4 @@ int main()
 	l1.insert(30);
 	l1.insert(3);
 return 0;
-}
+} */
