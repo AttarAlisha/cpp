@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 class Node {
 public:
     int data;
@@ -15,7 +15,7 @@ private:
 public:
     LinkedList() : head(nullptr) {}
 
-    // Attach at end
+    
     void attach(int value) {
         Node* newNode = new Node(value);
         if (head == nullptr) {
@@ -33,16 +33,16 @@ public:
     void traverse() {
         Node* temp = head;
         while (temp != nullptr) {
-            std::cout << temp->data << " ";
+            cout << temp->data << " ";
             temp = temp->next;
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 
     // Detach at end
     void detach() {
         if (head == nullptr) {
-            std::cout << "List is empty." << std::endl;
+            cout << "List is empty." <<endl;
             return;
         }
         if (head->next == nullptr) {
@@ -67,7 +67,7 @@ int main() {
     list.attach(2);
     list.attach(3);
 
-    std::cout << "Original List: ";
+    cout << "Original List: ";
     list.traverse();
 
     list.detach();
