@@ -17,7 +17,7 @@ class base{
 		}
 };
 
-class derived : public base
+class derived : public base 
 {
 	public:
 		 void show()
