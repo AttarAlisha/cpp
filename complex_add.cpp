@@ -14,8 +14,6 @@ class complex{
 		imag=i;
 	}
 	
-	friend complex operator +(complex c1, complex c2);
-	
 	int getreal()
 	{
 		return real;
@@ -24,15 +22,14 @@ class complex{
 	{
 		return imag;
 	}	
-};
-complex operator +(complex c1,complex c2)
+	complex operator +(complex c1)
 	{
 		complex c3;
-		c3.real=c1.real+c2.real;
-		c3.imag=c1.imag+c2.imag;
+		c3.real=real+c1.real;
+		c3.imag=imag+c1.imag;
 		return c3;
 	}
-	
+};
 	
 int main()
 {
@@ -41,7 +38,7 @@ int main()
      cout<<"enter 1st complex no:  ";
      cin>>a>>i1;
      cout<<"enter 2nd complex no: ";
-     cin>>b,i2;
+     cin>>b>>i2;
      
 	complex c1(a,i1),c2(b,i2);
 	complex c3;
