@@ -12,8 +12,16 @@ private:
     int year;
 
 public:
-    Date() : day(0), month(0), year(0) {}
-    Date(int d, int m, int y) : day(d), month(m), year(y) {}
+    Date() {
+	day=0;
+	month=0;
+	year=0;
+    }
+    Date(int d, int m, int y) {
+	day=d;
+	month=m;
+	year=y;
+	}
 
     void acceptDate() {
         cout << "Enter date (dd mm yyyy): ";
@@ -36,10 +44,10 @@ public:
 
     void incrementDay() {
         day++;
-        if (day > 31) {
+        if (day >= 31) {
             day = 1;
             month++;
-            if (month > 12) {
+            if (month >= 12) {
                 month = 1;
                 year++;
             }
@@ -48,15 +56,15 @@ public:
 
     void incrementMonth() {
         month++;
-        if (month > 12) {
+        if (month >= 12) {
             month = 1;
             year++;
         }
     }
 
 private:
-    std::string getMonthAbbreviation(int month) {
-        static const char* monthNames[] = {"", "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
+    string getMonthAbbreviation(int month) {
+        static const char* monthNames[] = { "","JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"};
         return monthNames[month];
     }
 
